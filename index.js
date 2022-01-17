@@ -18,3 +18,16 @@ function operate (operator, a, b) {
     let result = operator(a, b)
     return result
 }
+
+function populate () {
+    let previousContent = calculatorDisplay.textContent
+    calculatorDisplay.textContent = previousContent + this.textContent
+}
+
+let calculatorDisplay = document.getElementById("display")
+
+let numbuttons = document.querySelectorAll('.numBtn')
+
+numbuttons.forEach((btn) => {
+    btn.addEventListener('click', populate)
+})
