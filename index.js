@@ -20,9 +20,17 @@ function operate (operator, a, b) {
 }
 
 function populate () {
-    let previousContent = calculatorDisplay.textContent
-    calculatorDisplay.textContent = previousContent + this.textContent
-    displayValue = Number(calculatorDisplay.textContent)
+    if(clearDisplay){
+        calculatorDisplay.textContent = ''
+        let previousContent = calculatorDisplay.textContent
+        calculatorDisplay.textContent = previousContent + this.textContent
+        displayValue = Number(calculatorDisplay.textContent)
+        clearDisplay = false
+    }else {
+        let previousContent = calculatorDisplay.textContent
+        calculatorDisplay.textContent = previousContent + this.textContent
+        displayValue = Number(calculatorDisplay.textContent)
+    }
 }
 
 let calculatorDisplay = document.getElementById("display")
@@ -31,6 +39,7 @@ let displayValue
 let firstValue
 let equalsValue
 let selectedOperator
+let clearDisplay = false
 
 let numButtons = document.querySelectorAll('.numBtn')
 
@@ -48,6 +57,7 @@ addBtn.addEventListener('click', () => {
         calculatorDisplay.textContent = operate(selectedOperator, firstValue, displayValue)
         firstValue = Number(calculatorDisplay.textContent)
         selectedOperator = add
+        clearDisplay = true
     }
 })
 
@@ -61,6 +71,7 @@ subtractBtn.addEventListener('click', () => {
         calculatorDisplay.textContent = operate(selectedOperator, firstValue, displayValue)
         firstValue = Number(calculatorDisplay.textContent)
         selectedOperator = subtract
+        clearDisplay = true
     }
 })
 
@@ -74,6 +85,7 @@ multiplyBtn.addEventListener('click', () => {
         calculatorDisplay.textContent = operate(selectedOperator, firstValue, displayValue)
         firstValue = Number(calculatorDisplay.textContent)
         selectedOperator = multiply
+        clearDisplay = true
     }
 })
 
@@ -87,12 +99,15 @@ divideBtn.addEventListener('click', () => {
         calculatorDisplay.textContent = operate(selectedOperator, firstValue, displayValue)
         firstValue = Number(calculatorDisplay.textContent)
         selectedOperator = divide
+        clearDisplay = true
     }
 })
 
 let equalsBtn = document.getElementById("equalsBtn")
 equalsBtn.addEventListener('click', () => {
-    if(equalsValue === undefined) {
+    if(selectedOperator === undefined || firstValue === undefined){
+        
+    }else if(equalsValue === undefined) {
         calculatorDisplay.textContent = operate(selectedOperator, firstValue, displayValue)
         equalsValue = Number(calculatorDisplay.textContent)
     }else {
