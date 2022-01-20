@@ -51,7 +51,7 @@ button{
 
 .operatorBtn{
     width: 20vw;
-    height: 3.33vw;
+    height: 2.86vw;
     font-size: large;
     font-weight: bold;
     background-color: #8ab237;
@@ -72,4 +72,8 @@ button{
 #clearBtn,
 #equalsBtn{
     background-color: #c7cc27;
+}
+
+#dotBtn{
+    background-color: #f4e75b;
 }

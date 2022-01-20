@@ -19,6 +19,15 @@ function operate (operator, a, b) {
     return result
 }
 
+function makeFloat () {
+    if (calculatorDisplay.textContent.includes('.')) {
+
+    }else {
+        let previousContent = calculatorDisplay.textContent
+        calculatorDisplay.textContent = previousContent + '.'
+    }
+}
+
 function populate () {
     if(clearDisplay){
         calculatorDisplay.textContent = ''
@@ -124,3 +133,6 @@ clearBtn.addEventListener('click', () => {
     equalsValue = undefined
     displayValue = undefined
 })
+
+let dotBtn = document.getElementById("dotBtn")
+dotBtn.addEventListener('click', makeFloat)
